@@ -1,0 +1,31 @@
+GET http://localhost:3010/project
+
+###
+
+POST http://localhost:3010/project/createProject
+Content-Type: application/json
+
+{
+    "userID": "0",
+    "name": "First Project Test",
+    "desc": "My First Project"
+}
+
+###
+
+GET http://localhost:3010/project/getUserProjects/0
+
+###
+
+POST http://localhost:3010/issue/createIssue
+Content-Type: application/json
+
+{
+    "projectID": "1234532asasd",
+    "name": "New Issue",
+    "desc": "My new issue"
+}
+
+###
+
+GET http://localhost:3010/issue/getProjectIssues/60a97e8bed762e4244e4acf9
