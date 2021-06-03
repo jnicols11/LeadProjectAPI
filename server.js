@@ -17,4 +17,7 @@ app.use('/project', projectRouter)
 const issueRouter = require('./routes/issue')
 app.use('/issue', issueRouter)
 
+const sprintRouter = require('./routes/sprint')
+app.use('/sprint', sprintRouter)
+
 app.listen(3010, () => console.log('Server Started'))

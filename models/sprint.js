@@ -12,5 +12,11 @@ const sprintSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    issues: {
+        type: [],
+        required: true
     }
 })
+
+module.exports = mongoose.model('Sprint', sprintSchema)
