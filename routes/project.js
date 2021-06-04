@@ -54,8 +54,14 @@ router.post('/createProject', async (req, res) => {
 })
 
 // Update a project
-router.patch('/updateProject', (req, res) => {
-
+router.patch('/updateProject/:projectID', async (req, res) => {
+    try {
+        await Project.findOneAndUpdate({ _id: req.params.projectID }, req.body, function (err, project){
+            res.send(project);
+        });
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 })
 
 // Delete a project
