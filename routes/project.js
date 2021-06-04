@@ -59,10 +59,11 @@ router.patch('/updateProject', (req, res) => {
 })
 
 // Delete a project
-router.delete('/deleteProject/:id', getProject, async (req, res) => {
+router.delete('/deleteProject/:id', async (req, res) => {
     try {
-        await res.project.remove()
-        res.json({ message: 'Deleted Project' })
+        const project = await Project.findOne({ _id: req.params.id.toString() });
+        await Project.remove(project);
+        res.status(200).json({ message: 'Project Deleted!' })
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
