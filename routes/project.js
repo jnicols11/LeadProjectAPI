@@ -13,8 +13,14 @@ router.get('/', async (req, res) => {
 })
 
 // Get Project by ID
-router.get('/getProject/:id/:userID', (req, res) => {
+router.get('/getProjectById/:id', async (req, res) => {
+    try {
+        const project = await Project.findOne({ _id: req.params.id.toString() });
 
+        return res.status(200).json(project);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 })
 
 // Get ALl Projects connected to user ID
