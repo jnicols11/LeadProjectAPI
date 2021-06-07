@@ -18,6 +18,10 @@ const projectSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: Date.now
+    },
+    users: {
+        type: [],
+        default: [1]
     }
 })
 

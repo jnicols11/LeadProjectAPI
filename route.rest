@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3010/project/getUserProjects/0
+GET http://localhost:3010/project/getUserProjects/1
 
 ###
 

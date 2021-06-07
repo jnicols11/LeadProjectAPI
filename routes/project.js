@@ -42,7 +42,8 @@ router.post('/createProject', async (req, res) => {
         userID: req.body.userID,
         name: req.body.name,
         desc: req.body.desc,
-        deadline: req.body.deadline
+        deadline: req.body.deadline,
+        users: req.body.users
     })
 
     try {
