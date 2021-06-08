@@ -17,6 +17,10 @@ GET http://localhost:3010/project/getUserProjects/1
 
 ###
 
+GET http://localhost:3010/project/getProjectById/60a97e8bed762e4244e4acf9
+
+###
+
 POST http://localhost:3010/issue/createIssue
 Content-Type: application/json
 

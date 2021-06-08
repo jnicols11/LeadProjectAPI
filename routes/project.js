@@ -26,7 +26,7 @@ router.get('/getProjectById/:id', async (req, res) => {
 // Get ALl Projects connected to user ID
 router.get('/getUserProjects/:userID', async (req, res) => {
     try {
-        const projects = await Project.find({ userID: req.params.userID.toString() });
+        const projects = await Project.find({ users: +req.params.userID });
 
         projects.map(project => project.name).sort()
 
