@@ -20,7 +20,10 @@ const projectSchema = new mongoose.Schema({
         default: Date.now
     },
     users: {
-        type: [Number]
+        type: [{
+            id: Number,
+            role: String
+        }]
     }
 })
 

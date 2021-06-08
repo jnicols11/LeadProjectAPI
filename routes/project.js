@@ -26,7 +26,8 @@ router.get('/getProjectById/:id', async (req, res) => {
 // Get ALl Projects connected to user ID
 router.get('/getUserProjects/:userID', async (req, res) => {
     try {
-        const projects = await Project.find({ users: +req.params.userID });
+        const id = +req.params.userID;
+        const projects = await Project.find({ "users.id": id });
 
         projects.map(project => project.name).sort()
 
@@ -75,6 +76,7 @@ router.delete('/deleteProject/:id', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 })
+
 
 async function getProject(req, res, next) {
     let project

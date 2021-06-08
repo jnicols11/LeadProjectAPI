@@ -37,3 +37,7 @@ GET http://localhost:3010/issue/getProjectIssues/60a97e8bed762e4244e4acf9
 ###
 
 GET http://localhost:3010/sprint/getSprints/1
+
+###
+
+DELETE http://localhost:3010/project/removeUser/60a97e8bed762e4244e4acf9/60bff7448bbadc7358bca165
