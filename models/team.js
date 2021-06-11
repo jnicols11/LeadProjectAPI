@@ -1,11 +1,7 @@
 const mongoose = require('mongoose')
 
-const sprintSchema = new mongoose.Schema({
+const teamSchema = new mongoose.Schema({
     projectID: {
-        type: String,
-        required: true
-    },
-    teamID: {
         type: String,
         required: true
     },
@@ -13,10 +9,14 @@ const sprintSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    issues: {
-        type: [],
+    leader: {
+        type: Number,
+        required: true
+    },
+    members: {
+        type: [Number],
         required: true
     }
 })
 
-module.exports = mongoose.model('Sprint', sprintSchema)
+module.exports = mongoose.model('Team', teamSchema)

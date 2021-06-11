@@ -20,4 +20,7 @@ app.use('/issue', issueRouter)
 const sprintRouter = require('./routes/sprint')
 app.use('/sprint', sprintRouter)
 
+const teamRouter = require('./routes/team')
+app.use('/team', teamRouter)
+
 app.listen(3010, () => console.log('Server Started'))

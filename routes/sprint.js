@@ -1,5 +1,4 @@
 const express = require('express')
-const project = require('../models/project')
 const router = express.Router()
 const Sprint = require('../models/sprint')
 
@@ -7,7 +6,7 @@ const Sprint = require('../models/sprint')
 router.post('/createSprint', async (req, res) => {
     const sprint = new Sprint({
         projectID: req.body.projectID,
-        userID: req.body.userID,
+        teamID: req.body.teamID,
         name: req.body.name,
         issues: req.body.issues
     })
