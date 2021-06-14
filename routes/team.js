@@ -47,5 +47,27 @@ router.get('/getUserTeams/:projectID/:userID', async (req, res) => {
     }
 })
 
+// updates a team in the database by its ID
+router.patch('/updateTeam/:teamID', async (req, res) => {
+    try {
+        await Team.findOneAndUpdate({ _id: req.params.teamID }, req.body, function (err, team){
+            res.send(team);
+        });
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
+
+// delete a team from the database by its ID
+router.delete('/deleteTeam/:teamID', async (req, res) => {
+    try {
+        const team = await Team.findOne({ _id: req.params.teamID.toString() });
+        await Team.remove(team);
+        res.status(200).json({ message: 'Team Deleted!' })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
+
 // export router
 module.exports = router
