@@ -35,11 +35,9 @@ router.get('/getAllTeams/:projectID', async (req, res) => {
 // get all teams a user is connected to
 router.get('/getUserTeams/:projectID/:userID', async (req, res) => {
     try {
-        let teams = await Team.find({ projectID: req.params.projectID });
+        let teams = await Team.find({ projectID: req.params.projectID, members: req.params.userID });
 
-        find({ projectID: req.params.projectID });
-
-        teams = await teams.find({ members: req.params.userID })
+        teams.map(team => team.name).sort()
 
         return res.status(200).json(teams)
     } catch (err) {
@@ -50,7 +48,7 @@ router.get('/getUserTeams/:projectID/:userID', async (req, res) => {
 // updates a team in the database by its ID
 router.patch('/updateTeam/:teamID', async (req, res) => {
     try {
-        await Team.findOneAndUpdate({ _id: req.params.teamID }, req.body, function (err, team){
+        await Team.findOneAndUpdate({ _id: req.params.teamID }, req.body, function (team){
             res.send(team);
         });
     } catch (err) {
