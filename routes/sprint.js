@@ -19,10 +19,10 @@ router.post('/createSprint', async (req, res) => {
     }
 })
 
-// Get all sprints connected to a userID
-router.get('/getSprints/:userID', async (req, res) => {
+// Get all sprints connected to a teamID
+router.get('/getSprints/:teamID', async (req, res) => {
     try {
-        const sprints = await Sprint.find({ userID: req.params.userID.toString() });
+        const sprints = await Sprint.find({ teamID: req.params.teamID.toString() });
 
         sprints.map(sprint => sprint.name).sort()
 
