@@ -25,6 +25,10 @@ const issueSchema = new mongoose.Schema({
     time: {
         type: Number,
         default: 2
+    },
+    state: {
+        type: Number,
+        default: 1
     }
 })
 
