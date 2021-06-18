@@ -36,6 +36,11 @@ router.get('/getAllTeams/:projectID', async (req, res) => {
 router.get('/getUserTeams/:projectID/:userID', async (req, res) => {
     try {
         let teams = await Team.find({ projectID: req.params.projectID, members: req.params.userID });
+        let ownedTeams = await Team.find({ projectID: req.params.projectID, leader: req.params.userID });
+
+        ownedTeams.forEach(team => {
+            teams.push(team);
+        });
 
         teams.map(team => team.name).sort()
 
