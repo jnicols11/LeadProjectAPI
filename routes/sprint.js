@@ -32,4 +32,15 @@ router.get('/getTeamSprints/:teamID', async (req, res) => {
     }
 })
 
+// Update a Sprint
+router.patch('/updateSprint/:sprintID', async (req, res) => {
+    try {
+        await Sprint.findOneAndUpdate({ _id: req.params.sprintID }, req.body, function (err, sprint) {
+            res.send(sprint);
+        })
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
+
 module.exports = router
