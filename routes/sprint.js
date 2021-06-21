@@ -43,4 +43,15 @@ router.patch('/updateSprint/:sprintID', async (req, res) => {
     }
 })
 
+// Delete a Sprint
+router.patch('/deleteSprint/:sprintID', async (req, res) => {
+    try {
+        await Sprint.deleteOne({ _id: req.params.sprintID })
+
+        res.status(200).json({ message: 'Delete Success!' })
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
+
 module.exports = router
