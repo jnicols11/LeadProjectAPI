@@ -5,8 +5,14 @@ const sprintSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    teamID: {
-        type: String,
+    team: {
+        type: {
+            projectID: String,
+            name: String,
+            leader: Number,
+            members: [Number],
+            id: String
+        },
         required: true
     },
     name: {

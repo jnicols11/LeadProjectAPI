@@ -6,7 +6,7 @@ const Sprint = require('../models/sprint')
 router.post('/createSprint', async (req, res) => {
     const sprint = new Sprint({
         projectID: req.body.projectID,
-        teamID: req.body.teamID,
+        team: req.body.team,
         name: req.body.name,
         issues: req.body.issues
     })
@@ -22,7 +22,7 @@ router.post('/createSprint', async (req, res) => {
 // Get all sprints connected to a teamID
 router.get('/getTeamSprints/:teamID', async (req, res) => {
     try {
-        const sprints = await Sprint.find({ teamID: req.params.teamID.toString() });
+        const sprints = await Sprint.find({ "team.id": req.params.teamID.toString() });
 
         sprints.map(sprint => sprint.name).sort()
 
@@ -44,7 +44,7 @@ router.patch('/updateSprint/:sprintID', async (req, res) => {
 })
 
 // Delete a Sprint
-router.patch('/deleteSprint/:sprintID', async (req, res) => {
+router.delete('/deleteSprint/:sprintID', async (req, res) => {
     try {
         await Sprint.deleteOne({ _id: req.params.sprintID })
 
