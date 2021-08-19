@@ -25,7 +25,7 @@ router.post('/createIssue', async (req, res) => {
 // Get all project issues (Read)
 router.get('/getProjectIssues/:projectID', async (req, res) => {
     try {
-        const issues = await Issue.find({ backlogID: req.params.projectID })
+        const issues = await Issue.find({ backlogID: req.params.projectID, state: 1 })
 
         issues.map(issue => issue.name).sort()
 
@@ -34,6 +34,20 @@ router.get('/getProjectIssues/:projectID', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 })
+
+// Get completed project issues
+router.get('/getCompletedIssues/:projectID', async (req, res) => {
+    try {
+        const issues = await Issue.find({ projectID: req.params.projectID, state: 3 })
+
+        issues.map(issue => issue.name).sort()
+
+        return res.status(200).json(issues);
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
+
 
 // Update an issue
 router.patch('/updateIssue/:issueID', async (req, res) => {
