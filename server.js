@@ -1,11 +1,8 @@
 require('dotenv').config()
 const cors = require('cors'); 
-
+const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
-app.use(cors())
-const mongoose = require('mongoose')
-const cors = require('cors')
 
 app.use(cors())
 
