@@ -22,6 +22,10 @@ const sprintSchema = new mongoose.Schema({
     issues: {
         type: [],
         required: true
+    },
+    deadline: {
+        type: Date,
+        required: true
     }
 })
 

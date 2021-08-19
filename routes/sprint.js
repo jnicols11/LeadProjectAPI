@@ -8,7 +8,8 @@ router.post('/createSprint', async (req, res) => {
         projectID: req.body.projectID,
         team: req.body.team,
         name: req.body.name,
-        issues: req.body.issues
+        issues: req.body.issues,
+        deadline: req.body.deadline
     })
 
     try {
